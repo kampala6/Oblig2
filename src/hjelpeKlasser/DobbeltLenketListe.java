@@ -4,6 +4,24 @@ import java.util.Iterator;
 
 public class DobbeltLenketListe<T> implements Liste<T>{
 
+    public static final class Node<T>{
+
+        private T verdi;
+        private Node<T> neste, nodebefore;
+
+        public Node(T verdi, Node<T> neste, Node<T> nodebefore) {
+            this.verdi = verdi;
+            this.neste = neste;
+            this.nodebefore = nodebefore;
+        }
+    }
+
+    public DobbeltLenketListe(){
+
+    }
+
+
+
     @Override
     public boolean leggInn(T verdi) {
         return false;
