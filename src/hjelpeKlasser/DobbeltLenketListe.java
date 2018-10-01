@@ -1,3 +1,5 @@
+package hjelpeKlasser;
+
 import hjelpeKlasser.Liste;
 
 import java.util.Iterator;
@@ -7,17 +9,27 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     public static final class Node<T>{
 
         private T verdi;
-        private Node<T> neste, nodebefore;
+        private Node<T> nestepeker, forrigepeker;
 
-        public Node(T verdi, Node<T> neste, Node<T> nodebefore) {
+        public Node(T verdi, Node<T> nestepeker, Node<T> forrigepeker) {
             this.verdi = verdi;
-            this.neste = neste;
-            this.nodebefore = nodebefore;
+            this.nestepeker = nestepeker;
+            this.forrigepeker = forrigepeker;
         }
     }
 
+
+ //instansvariables
+    private Node<T> hode, hale;
+    private int antall;
+    private int antallEndringer;
+
+
     public DobbeltLenketListe(){
 
+        hode = hale = null;
+        antall = 0;
+        antallEndringer = 0;
     }
 
 
@@ -64,12 +76,12 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     @Override
     public int antall() {
-        return 0;
+        return antall;
     }
 
     @Override
     public boolean tom() {
-        return false;
+        return antall == 0;
     }
 
     @Override
