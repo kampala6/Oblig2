@@ -34,6 +34,25 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     private int endringer;   // antall endringer i listen
 
 
+    // hjelpemetode
+    private Node<T> finnNode(int indeks) {
+
+        Node<T> pointer;
+        int i = 0;
+        if(indeks < antall / 2){ // letingen etter noden start fra hode mot høyre
+            pointer = hode;
+            while (i < indeks){
+                pointer = pointer.neste;
+            }
+        }else {
+            pointer = hale;
+            while (i < indeks){
+                pointer = pointer.forrige;
+            }
+        }
+           return pointer;
+    }
+
 
 
     public DobbeltLenketListe(){  //standardKonstrucktor
@@ -42,6 +61,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         antall = 0;
         endringer = 0;
     }
+
 
     /**
      * konstruktør
@@ -89,7 +109,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     }
 
     /**
-     *
+     *Oppgave 2b
      * @return
      */
     public String omvendtString() {
@@ -113,11 +133,22 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     @Override
     public boolean leggInn(T verdi) {
-        return false;
+
+        Objects.requireNonNull(verdi, "Null verdi er uloviig");
+
+        if(tom()){
+             hode = hale = new Node<>(verdi, null, null);
+        }else {
+            hale = hale.neste = new Node<>(verdi, hale, null);
+        }
+        antall++;
+        endringer++;
+        return true;
     }
 
     @Override
     public void leggInn(int indeks, T verdi) {
+
 
     }
 
@@ -126,9 +157,15 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         return false;
     }
 
+    /**
+     * Oppgave 3a
+     * @param indeks
+     * @return
+     */
     @Override
     public T hent(int indeks) {
-        return null;
+        indeksKontroll(indeks, false);
+        return finnNode(indeks).verdi;
     }
 
     @Override
@@ -138,7 +175,17 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     @Override
     public T oppdater(int indeks, T verdi) {
-        return null;
+
+        Objects.requireNonNull(verdi, "Null verdi ikke lov");
+        indeksKontroll(indeks, false);
+
+        Node<T> nodepeker = finnNode(indeks); //her finner vi index først so skal gir det verdi vi skal oppdater
+
+        T oldvalue = nodepeker.verdi;  //Lagger verdi
+        nodepeker.verdi = verdi;
+        endringer++;
+
+        return oldvalue;
     }
 
     @Override
