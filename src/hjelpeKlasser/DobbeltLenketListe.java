@@ -7,28 +7,33 @@ import java.util.Objects;
 
 public class DobbeltLenketListe<T> implements Liste<T>{
 
-    public static final class Node<T>{
-
+    private static final class Node<T>   // en indre nodeklasse
+    {
+        // instansvariabler
         private T verdi;
-        private Node<T> nestepeker, forrigepeker;
+        private Node<T> forrige, neste;
 
-        public Node(T verdi, Node<T> nestepeker, Node<T> forrigepeker) {
+        private Node(T verdi, Node<T> forrige, Node<T> neste)  // konstruktør
+        {
             this.verdi = verdi;
-            this.nestepeker = nestepeker;
-            this.forrigepeker = forrigepeker;
+            this.forrige = forrige;
+            this.neste = neste;
         }
 
-        private Node(T verdi){
-            this(verdi,null, null);
+        private Node(T verdi)  // konstruktør
+        {
+            this(verdi, null, null);
         }
 
-    }
+    } // Node
+
+    // instansvariabler
+    private Node<T> hode;          // peker til den første i listen
+    private Node<T> hale;          // peker til den siste i listen
+    private int antall;            // antall noder i listen
+    private int endringer;   // antall endringer i listen
 
 
- //instansvariables
-    private Node<T> hode, hale;
-    private int antall;
-    private int endringer;
 
 
     public DobbeltLenketListe(){  //standardKonstrucktor
@@ -51,15 +56,12 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
         for(T verdi : a){
             if(verdi != null){
-                hode = hale = new Node<>(verdi, hale, null);
+                hale = hale.neste = new Node<>(verdi, hale, null);
                 antall++;
             }
         }
-        if(a.length == 0){
-            hode = hale = null;// hvis tomt skall de være null
-        }else{
-            hode = hode.nestepeker.forrigepeker = null; //Spesielt skal både hode.forrigeoghale.nestevære null.
-        }
+        if(antall == 0) hode = hale = null;// hvis tomt skall de være null
+        else (hode = hode.neste).forrige = null; //Spesielt skal både hode.forrigeoghale.nestevære null.
     }
 
 
@@ -67,36 +69,24 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      * Oppgave 2
      * @return
      */
-    @Override
     public String toString(){
-        if(tom()) return "[]";
+
         StringBuilder txt = new StringBuilder();
 
-        Node<T> pointer = hode;
-        txt.append(pointer.verdi);
-        pointer = pointer.nestepeker;
+        txt.append("[");
 
-        while (pointer != null){
-            txt.append(",").append("").append(pointer.verdi);
-            pointer = pointer.nestepeker;
+        Node<T> peker = hode;  // start from the first one
+        if(peker != null) {    // if not null start printin the values
+           txt.append(peker.verdi);
+           while (peker != null && peker.neste != null){
+               txt.append("," + peker.neste.verdi);
+               peker = peker.neste;
+            }
         }
-        txt.append("]");
+            txt.append(']');
         return txt.toString();
+
     }
-//    public String toString(){
-//        StringBuilder txt = new StringBuilder();
-//
-//        txt.append("[");
-//        Node<T> pointer = hode;
-//        if(pointer != null) txt.append(pointer.verdi);
-//       while (pointer != null && pointer.nestepeker != null){
-//           txt.append(" ," + pointer.nestepeker.verdi);
-//           pointer = pointer.nestepeker;
-//       }
-//       txt.append("]");
-//       return txt.toString();
-//
-//    }
 
     /**
      *
@@ -104,29 +94,21 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      */
     public String omvendtString() {
 
-        if(tom()) return "[]";
         StringBuilder txt = new StringBuilder();
 
-        Node<T> pointer = hale;
-        txt.append(pointer.verdi);
-        pointer = pointer.forrigepeker;
+        txt.append("[");
 
-        while (pointer != null){
-            txt.append(",").append("").append(pointer.verdi);
-            pointer = pointer.forrigepeker;
+        Node<T> peker = hale;
+        if(peker != null) {
+           txt.append(peker.verdi);
+           while (peker != null && peker.forrige != null){
+               txt.append("," + peker.forrige.verdi);
+               peker = peker.forrige;
+           }
         }
-        txt.append("]");
+        txt.append(']');
         return txt.toString();
 
-//        txt.append("[");
-//        Node<T> pointer = hale;
-//        if(pointer != null) txt.append(pointer.verdi);
-//        while (pointer != null && pointer.forrigepeker != null){
-//            txt.append(" ," + pointer.forrigepeker.verdi);
-//            pointer = pointer.forrigepeker;
-//        }
-//        txt.append("]");
-//        return txt.toString();
     }
 
     @Override
