@@ -38,15 +38,16 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     private Node<T> finnNode(int indeks) {
 
         Node<T> pointer;
-        int i = 0;
+        //int i = 0;
         if(indeks < antall / 2){ // letingen etter noden start fra hode mot høyre
             pointer = hode;
-            while (i < indeks){
+            for (int i = 0; i < indeks; i++) {
                 pointer = pointer.neste;
             }
+
         }else {
             pointer = hale;
-            while (i < indeks){ //letingen start fra halen og gå mot venstre
+            for (int i = antall -1 ; i > indeks; i--) {
                 pointer = pointer.forrige;
             }
         }
@@ -84,7 +85,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
 
     /**
-     * Oppgave 2
+     * Oppgave 2a
      * @return
      */
     public String toString(){
@@ -107,7 +108,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     }
 
     /**
-     *Oppgave 2b
+     *Oppgave 2a
      * @return
      */
     public String omvendtString() {
@@ -129,6 +130,50 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     }
 
+    /**
+     * Method fra avsnitt 1.2.2
+     * @param antall
+     * @param fra
+     * @param til
+     */
+    public static void fratilKontroll(int antall, int fra, int til) {
+        if (fra < 0)                                  // fra er negativ
+            throw new ArrayIndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > antall)                          // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + antall + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
+    /**
+     *
+     * @param fra
+     * @param til
+     * @return
+     */
+    public Liste<T> subliste(int fra, int til) {
+         fratilKontroll(antall , fra, til);
+        DobbeltLenketListe<T> liste = new DobbeltLenketListe<>();
+
+        Node<T> peker = finnNode(fra); //bruke den til å finne den interval fra
+
+        for (int i = fra; i < til; i++) {
+            liste.leggInn(peker.verdi);
+            peker = peker.neste;
+        }
+        return liste;
+    }
+
+    /**
+     * Oppgave 2b
+     * @param verdi
+     * @return
+     */
     @Override
     public boolean leggInn(T verdi) {
 
@@ -144,6 +189,11 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         return true;
     }
 
+    /**
+     * Oppgave 5
+     * @param indeks
+     * @param verdi
+     */
     @Override
     public void leggInn(int indeks, T verdi) {
 

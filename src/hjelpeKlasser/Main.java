@@ -33,6 +33,17 @@ public class Main {
         for(int i = 1; i <= 3; i++){
             liste1.leggInn(i);
             System.out.println(liste1.toString() + ""+ liste1.omvendtString());}
+
+        Character[] c = {'A','B','C','D','E','F','G','H','I','J',};
+        DobbeltLenketListe<Character> liste3 = new DobbeltLenketListe<>(c);
+        System.out.println( liste3.toString());
+        System.out.println(liste3.antall());
+        System.out.println(liste3.subliste(3,8)); // [D, E, F, G, H]
+        System.out.println(liste3.subliste(5,5)); // []
+        System.out.println(liste3.subliste(8,liste.antall())); // [I, J]
+
+
+        liste3.antall();
     }
 
     public static void loopit(String label){
