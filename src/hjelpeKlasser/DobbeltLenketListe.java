@@ -46,14 +46,12 @@ public class DobbeltLenketListe<T> implements Liste<T>{
             }
         }else {
             pointer = hale;
-            while (i < indeks){
+            while (i < indeks){ //letingen start fra halen og gå mot venstre
                 pointer = pointer.forrige;
             }
         }
            return pointer;
     }
-
-
 
     public DobbeltLenketListe(){  //standardKonstrucktor
 
@@ -149,6 +147,23 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     @Override
     public void leggInn(int indeks, T verdi) {
 
+        Objects.requireNonNull(verdi,"Ikke lovlig med null verdier" );
+
+        indeksKontroll(indeks, true);
+
+        if(indeks == 0 && antall == 0){
+            hode = hale = new Node<>(verdi, null, null);
+        }else if(indeks == 0){
+            hode = new Node<>(verdi, null, hode);
+        }else if(indeks == antall){
+            hale = new Node<>(verdi, hale, null);
+            hale.neste.neste = hale;
+        }else {
+            Node<T> peker = finnNode(indeks);
+            peker.forrige = peker.forrige.neste = new Node<>(verdi, peker.forrige, peker);
+        }
+        antall++;
+        endringer++;
 
     }
 
