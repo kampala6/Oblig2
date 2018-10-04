@@ -176,7 +176,6 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      */
     @Override
     public boolean leggInn(T verdi) {
-
         Objects.requireNonNull(verdi, "Null verdi er uloviig");
 
         if(tom()){
@@ -307,19 +306,16 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         return null;
     }
 
-    public Iterator<T> iterator(int indeks)
-    {
+    public Iterator<T> iterator(int indeks) {
         throw new UnsupportedOperationException("Ikke laget ennå!");
     }
 
-    private class DobbeltLenketListeIterator implements Iterator<T>
-    {
+    private class DobbeltLenketListeIterator implements Iterator<T> {
         private Node<T> denne;
         private boolean fjernOK;
         private int iteratorendringer;
 
-        private DobbeltLenketListeIterator()
-        {
+        private DobbeltLenketListeIterator() {
             denne = hode;     // denne starter på den første i listen
             fjernOK = false;  // blir sann når next() kalles
             iteratorendringer = endringer;  // teller endringer
