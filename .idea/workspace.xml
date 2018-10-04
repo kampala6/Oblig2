@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1271904-271d-46a8-a923-d21fabd42720" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hjelpeKlasser/DobbeltLenketListe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hjelpeKlasser/DobbeltLenketListe.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -39,13 +38,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="3372" />
-          <entry key="txt" value="22" />
+          <entry key="txt" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3372" />
-          <entry key="PLAIN_TEXT" value="22" />
+          <entry key="PLAIN_TEXT" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
@@ -64,11 +63,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/DobbeltLenketListe.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="329" column="27" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="27" />
+            <state relative-caret-position="256">
+              <caret line="164" column="10" selection-start-line="164" selection-start-column="10" selection-end-line="164" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1157#1246#0" expanded="true" />
@@ -131,19 +130,16 @@
                 <element signature="e#3973#4032#0" expanded="true" />
                 <element signature="e#4239#4296#1" expanded="true" />
                 <element signature="e#4306#4336#0" expanded="true" />
-                <element signature="e#4494#4610#0" expanded="true" />
-                <element signature="e#4392#4404#1" expanded="true" />
-                <element signature="e#4494#4610#0" expanded="true" />
-                <element signature="e#4494#4610#0" expanded="true" />
-                <element signature="e#4494#4610#0" expanded="true" />
-                <element signature="e#4494#4610#0" expanded="true" />
+                <element signature="e#4492#4504#1" expanded="true" />
+                <element signature="e#4513#4630#0" expanded="true" />
+                <element signature="e#4513#4630#0" expanded="true" />
                 <element signature="e#5590#5623#1" expanded="true" />
                 <element signature="e#5930#5931#0" expanded="true" />
                 <element signature="e#5975#5976#0" expanded="true" />
                 <element signature="e#6397#6422#1" expanded="true" />
                 <element signature="e#6431#6440#1" expanded="true" />
-                <element signature="e#6618#6647#0" expanded="true" />
-                <element signature="e#6618#6647#0" expanded="true" />
+                <element signature="e#6638#6667#0" expanded="true" />
+                <element signature="e#6638#6667#0" expanded="true" />
                 <element signature="e#7085#7086#0" expanded="true" />
                 <element signature="e#7113#7114#0" expanded="true" />
                 <element signature="e#7161#7162#0" expanded="true" />
@@ -161,11 +157,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="37" column="75" lean-forward="true" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+            <state relative-caret-position="284">
+              <caret line="34" column="80" lean-forward="true" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
               <folding>
                 <element signature="e#288#340#1" expanded="true" />
                 <element signature="e#444#460#0" expanded="true" />
@@ -613,7 +609,7 @@
         <observation name="typedSelect" value="43.0" />
       </dailyData>
       <dailyData date="04-10-2018">
-        <observation name="cancelled" value="237.0" />
+        <observation name="cancelled" value="260.0" />
         <observation name="explicitSelect" value="22.0" />
         <observation name="typedSelect" value="7.0" />
       </dailyData>
@@ -646,7 +642,7 @@
         <observation name="count" value="349.0" />
       </dailyData>
       <dailyData date="04-10-2018">
-        <observation name="count" value="266.0" />
+        <observation name="count" value="289.0" />
       </dailyData>
     </factor>
     <factor id="doubleFeature:explicitProximity">
@@ -1389,7 +1385,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538685506685" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538685653573" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -1458,7 +1454,7 @@
       <workItem from="1538418253380" duration="8051000" />
       <workItem from="1538500219410" duration="7901000" />
       <workItem from="1538587368313" duration="2346000" />
-      <workItem from="1538590293367" duration="11746000" />
+      <workItem from="1538590293367" duration="12028000" />
     </task>
     <task id="LOCAL-00001" summary="initialisation git">
       <created>1538331114891</created>
@@ -1467,11 +1463,18 @@
       <option name="project" value="LOCAL" />
       <updated>1538331114892</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working with more methods">
+      <created>1538685571408</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1538685571408</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34682000" />
+    <option name="totallyTimeSpent" value="34964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="22" width="948" height="878" extended-state="0" />
@@ -1486,15 +1489,15 @@
       <window_info id="Favorites" order="6" sideWeight="0.50167227" side_tool="true" weight="0.24503312" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30930537" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30930537" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38663173" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32896462" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="RNConsole" order="8" />
+      <window_info anchor="bottom" id="RNConsole" order="8" weight="0.32896462" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21625164" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.21625164" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32896462" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -1547,14 +1550,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initialisation git" />
-    <option name="LAST_COMMIT_MESSAGE" value="initialisation git" />
+    <MESSAGE value="Working with more methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working with more methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/hjelpeKlasser/DobbeltLenketListe.java</url>
-          <line>347</line>
+          <line>348</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -1625,22 +1629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="37" column="75" lean-forward="true" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding>
-            <element signature="e#288#340#1" expanded="true" />
-            <element signature="e#444#460#0" expanded="true" />
-            <element signature="e#513#574#1" expanded="true" />
-            <element signature="e#583#644#1" expanded="true" />
-            <element signature="e#653#714#1" expanded="true" />
-            <element signature="e#1251#1310#1" expanded="true" />
-            <element signature="e#1319#1386#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/Liste.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1650,8 +1638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/DobbeltLenketListe.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="329" column="27" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="27" />
+        <state relative-caret-position="256">
+          <caret line="164" column="10" selection-start-line="164" selection-start-column="10" selection-end-line="164" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1157#1246#0" expanded="true" />
@@ -1714,19 +1702,16 @@
             <element signature="e#3973#4032#0" expanded="true" />
             <element signature="e#4239#4296#1" expanded="true" />
             <element signature="e#4306#4336#0" expanded="true" />
-            <element signature="e#4494#4610#0" expanded="true" />
-            <element signature="e#4392#4404#1" expanded="true" />
-            <element signature="e#4494#4610#0" expanded="true" />
-            <element signature="e#4494#4610#0" expanded="true" />
-            <element signature="e#4494#4610#0" expanded="true" />
-            <element signature="e#4494#4610#0" expanded="true" />
+            <element signature="e#4492#4504#1" expanded="true" />
+            <element signature="e#4513#4630#0" expanded="true" />
+            <element signature="e#4513#4630#0" expanded="true" />
             <element signature="e#5590#5623#1" expanded="true" />
             <element signature="e#5930#5931#0" expanded="true" />
             <element signature="e#5975#5976#0" expanded="true" />
             <element signature="e#6397#6422#1" expanded="true" />
             <element signature="e#6431#6440#1" expanded="true" />
-            <element signature="e#6618#6647#0" expanded="true" />
-            <element signature="e#6618#6647#0" expanded="true" />
+            <element signature="e#6638#6667#0" expanded="true" />
+            <element signature="e#6638#6667#0" expanded="true" />
             <element signature="e#7085#7086#0" expanded="true" />
             <element signature="e#7113#7114#0" expanded="true" />
             <element signature="e#7161#7162#0" expanded="true" />
@@ -1739,6 +1724,22 @@
             <element signature="e#7560#7561#0" expanded="true" />
             <element signature="e#7611#7612#0" expanded="true" />
             <element signature="e#7686#7687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hjelpeKlasser/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="34" column="80" lean-forward="true" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
+          <folding>
+            <element signature="e#288#340#1" expanded="true" />
+            <element signature="e#444#460#0" expanded="true" />
+            <element signature="e#513#574#1" expanded="true" />
+            <element signature="e#583#644#1" expanded="true" />
+            <element signature="e#653#714#1" expanded="true" />
+            <element signature="e#1251#1310#1" expanded="true" />
+            <element signature="e#1319#1386#1" expanded="true" />
           </folding>
         </state>
       </provider>

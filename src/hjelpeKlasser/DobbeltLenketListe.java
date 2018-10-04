@@ -157,14 +157,15 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      * @return
      */
     public Liste<T> subliste(int fra, int til) {
-         fratilKontroll(antall , fra, til);
+        fratilKontroll(antall , fra, til);
         DobbeltLenketListe<T> liste = new DobbeltLenketListe<>();
-
         Node<T> peker = finnNode(fra); //bruke den til å finne den interval fra
 
-        for (int i = fra; i < til; i++) {
+        int i = fra;
+        while (i < til) {
             liste.leggInn(peker.verdi);
             peker = peker.neste;
+            i++;
         }
         return liste;
     }
