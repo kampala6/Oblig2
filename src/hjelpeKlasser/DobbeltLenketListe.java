@@ -73,8 +73,9 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         Objects.requireNonNull(a, "Null verdi er Ulovlig");
         hode = hale = new Node<>(null);
 
-        for(T verdi : a){
-            if(verdi != null){
+        for (int i = 0; i < a.length; i++) {
+            T verdi = a[i];
+            if (verdi != null) {
                 hale = hale.neste = new Node<>(verdi, hale, null);
                 antall++;
             }
@@ -142,7 +143,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
         if (til > antall)                          // til er utenfor tabellen
             throw new ArrayIndexOutOfBoundsException
-                    ("til(" + til + ") > tablengde(" + antall + ")");
+                    ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
             throw new IllegalArgumentException
@@ -216,32 +217,48 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     }
 
+    /**
+     * Bruked method fra Løsningsforslag oppgave i avsnitt 3.3.3
+     * @param verdi
+     * @return
+     */
     @Override
     public boolean inneholder(T verdi) {
-        return false;
+        return indeksTil(verdi) != -1;
     }
 
     /**
      * Oppgave 3a
+     * vi bruke method finnNode som en hjelp method til å
+     * finne noden som har engitt posisjon/indeks(Fra kompendium avsnitt 3.3.3(Klassens øvrige metoder))
      * @param indeks
      * @return
      */
     @Override
     public T hent(int indeks) {
-        indeksKontroll(indeks, false);
+        indeksKontroll(indeks, false); //false: indeks = antall er ulovilg
         return finnNode(indeks).verdi;
     }
 
     @Override
     public int indeksTil(T verdi) {
-        return 0;
+        if(verdi == null) return -1;
+        Node<T> startNode = hode;
+        int i = 0;
+        while (i < antall){
+            if (startNode.verdi.equals(verdi)){
+                return i;
+            }
+            startNode = startNode.neste;
+        }
+        return -1;
     }
 
     @Override
     public T oppdater(int indeks, T verdi) {
 
         Objects.requireNonNull(verdi, "Null verdi ikke lov");
-        indeksKontroll(indeks, false);
+        indeksKontroll(indeks, false); //false: indeks = antall er ulovilg
 
         Node<T> nodepeker = finnNode(indeks); //her finner vi index først so skal gir det verdi vi skal oppdater
 
