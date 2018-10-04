@@ -97,7 +97,8 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         Node<T> peker = hode;  // start from the first one
         if(peker != null) {    // if not null start printin the values
            txt.append(peker.verdi);
-           while (peker != null && peker.neste != null){
+           while (true){
+               if (peker == null || peker.neste == null) break;
                txt.append("," + peker.neste.verdi);
                peker = peker.neste;
             }
@@ -112,15 +113,13 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      * @return
      */
     public String omvendtString() {
-
         StringBuilder txt = new StringBuilder();
-
         txt.append("[");
-
         Node<T> peker = hale;
         if(peker != null) {
            txt.append(peker.verdi);
-           while (peker != null && peker.forrige != null){
+           while (true){
+               if (peker == null || peker.forrige == null) break;
                txt.append("," + peker.forrige.verdi);
                peker = peker.forrige;
            }
