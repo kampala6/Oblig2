@@ -2,6 +2,7 @@ package hjelpeKlasser;
 
 import hjelpeKlasser.Liste;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Objects;
 
@@ -100,7 +101,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
            txt.append(peker.verdi);
            while (true){
                if (peker == null || peker.neste == null) break;
-               txt.append("," + peker.neste.verdi);
+               txt.append(", " + peker.neste.verdi);
                peker = peker.neste;
             }
         }
@@ -121,13 +122,17 @@ public class DobbeltLenketListe<T> implements Liste<T>{
            txt.append(peker.verdi);
            while (true){
                if (peker == null || peker.forrige == null) break;
-               txt.append("," + peker.forrige.verdi);
+               txt.append(", " + peker.forrige.verdi);
                peker = peker.forrige;
            }
         }
         txt.append(']');
         return txt.toString();
 
+    }
+    public static <T> void sorter(Liste<T> liste, Comparator<? super T> c)
+    {
+        throw new UnsupportedOperationException("Ikke laget ennå!");
     }
 
     /**
@@ -138,11 +143,11 @@ public class DobbeltLenketListe<T> implements Liste<T>{
      */
     public static void fratilKontroll(int antall, int fra, int til) {
         if (fra < 0)                                  // fra er negativ
-            throw new ArrayIndexOutOfBoundsException
+            throw new java.lang.IndexOutOfBoundsException
                     ("fra(" + fra + ") er negativ!");
 
         if (til > antall)                          // til er utenfor tabellen
-            throw new ArrayIndexOutOfBoundsException
+            throw new java.lang.IndexOutOfBoundsException
                     ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
@@ -197,17 +202,17 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     @Override
     public void leggInn(int indeks, T verdi) {
 
-        Objects.requireNonNull(verdi,"Ikke lovlig med null verdier" );
-
+        if (verdi == null) throw
+                new NullPointerException("Ikke tillatt med null-verdier!");
         indeksKontroll(indeks, true);
 
-        if(indeks == 0 && antall == 0){
+        if(antall == 0){
             hode = hale = new Node<>(verdi, null, null);
         }else if(indeks == 0){
-            hode = new Node<>(verdi, null, hode);
+            hode = hode.forrige = new Node<>(verdi, null, hode);
         }else if(indeks == antall){
-            hale = new Node<>(verdi, hale, null);
-            hale.neste.neste = hale;
+            hale = hale.neste =new Node<>(verdi, hale, null);
+
         }else {
             Node<T> peker = finnNode(indeks);
             peker.forrige = peker.forrige.neste = new Node<>(verdi, peker.forrige, peker);
@@ -244,14 +249,15 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     public int indeksTil(T verdi) {
         if(verdi == null) return -1;
         Node<T> startNode = hode;
-        int i = 0;
-        while (i < antall){
+        int index  = -1;
+         for (int i = 0; i < antall; i++){
             if (startNode.verdi.equals(verdi)){
-                return i;
+                index = i;
+                break;
             }
             startNode = startNode.neste;
         }
-        return -1;
+        return index;
     }
 
     @Override
