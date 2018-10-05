@@ -303,9 +303,25 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         return antall == 0;
     }
 
+    /**
+     * Oppgave 7
+     * referanser skal null still: forrige,neste og verdi
+     */
     @Override
     public void nullstill() {
 
+        Node<T> startNodePointer = hode;
+        while (startNodePointer != null){
+            Node<T> tempNode = startNodePointer.neste; // store pointer in tempNode
+            startNodePointer.neste = null;
+            startNodePointer.forrige = null;
+            startNodePointer.verdi = null;
+
+            startNodePointer = tempNode;
+            antall = 0;
+            endringer++;
+            hode = hale = null;
+        }
     }
 
     @Override
@@ -340,10 +356,17 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         }
 
         @Override
-        public T next()
-        {
-            throw new UnsupportedOperationException("Ikke laget ennå!");
+        public T next() {
+            fjernOK = true;
+             T verdi = denne.verdi;
+             denne = denne.neste;
+             return verdi;
         }
+
+        public Iterator<T> iterator(){
+            return new DobbeltLenketListeIterator();
+        }
+
 
         @Override
         public void remove()
