@@ -26,5 +26,6 @@ public interface Liste<T> extends Beholder<T>
     {
         if (indeks < 0 ? true : (leggInn ? indeks > antall() : indeks >= antall()))
             throw new IndexOutOfBoundsException(melding(indeks));
+
     }
 }  // Liste

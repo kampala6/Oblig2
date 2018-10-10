@@ -1,5 +1,8 @@
 package hjelpeKlasser;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -42,10 +45,32 @@ public class Main {
         System.out.println(liste3.subliste(5,5)); // []
         System.out.println(liste3.subliste(8,liste3.antall())); // [I, J]
        // System.out.println(liste3.subliste(0,11)); // [I, J]
+        System.out.println();
+
+        loopit("fjernMethod");
+
+      //  liste3.fjern('0');
+
+        System.out.println(liste3.toString());
+        System.out.println();
+
+        loopit("Oppgave 8 with tableListe and EnkeltLenketListe");
+        System.out.println();
 
 
+        String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
+        Liste<String> liste11 = new DobbeltLenketListe<>(navn);
+        Liste<String> liste2 = new TabellListe<>(navn);
+        Liste<String> liste33 = new EnkeltLenketListe<>(navn);
+        DobbeltLenketListe.sorter(liste1, Comparator.naturalOrder());
+        DobbeltLenketListe.sorter(liste2, Comparator.naturalOrder());
+        DobbeltLenketListe.sorter(liste3, Comparator.naturalOrder());
+        System.out.println(liste11); // [Anders, Berit, Bodil, Kari, Lars, Per]
+        System.out.println(liste2); // [Anders, Berit, Bodil, Kari, Lars, Per]
+        System.out.println(liste33); // [Anders, Berit, Bodil, Kari, Lars, Per]
+// Tabellen navn er upåvirket:
+        System.out.println(Arrays.toString(navn));
 
-        liste3.antall();
     }
 
     public static void loopit(String label){

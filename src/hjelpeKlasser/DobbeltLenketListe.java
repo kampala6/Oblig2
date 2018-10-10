@@ -2,9 +2,7 @@ package hjelpeKlasser;
 
 import hjelpeKlasser.Liste;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 public class DobbeltLenketListe<T> implements Liste<T>{
 
@@ -40,7 +38,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
         Node<T> pointer;
         //int i = 0;
-        if(indeks < antall / 2){ // letingen etter noden start fra hode mot høyre
+        if(indeks <= antall / 2){ // letingen etter noden start fra hode mot høyre
             pointer = hode;
             for (int i = 0; i < indeks; i++) {
                 pointer = pointer.neste;
@@ -130,9 +128,20 @@ public class DobbeltLenketListe<T> implements Liste<T>{
         return txt.toString();
 
     }
-    public static <T> void sorter(Liste<T> liste, Comparator<? super T> c)
-    {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+    public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+
+        for (int i = liste.antall(); i > 0 ; i--) {
+            Iterator<T> iterator = liste.iterator();
+            int min = 0;
+            T minverdi = iterator.next();
+            for (int j = 1; j < i; j++) {
+                T tempverdie = iterator.next();
+                if(c.compare(tempverdie, minverdi) < 0){
+                    min = i;
+                    minverdi = tempverdie;
+                }
+            }liste.leggInn(liste.fjern(min));
+        }
     }
 
     /**
@@ -184,7 +193,7 @@ public class DobbeltLenketListe<T> implements Liste<T>{
     public boolean leggInn(T verdi) {
         Objects.requireNonNull(verdi, "Null verdi er uloviig");
 
-        if(tom()){
+        if(antall == 0){
              hode = hale = new Node<>(verdi, null, null);
         }else {
             hale = hale.neste = new Node<>(verdi, hale, null);
@@ -277,12 +286,72 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     @Override
     public boolean fjern(T verdi) {
-        return false;
+
+        if(verdi == null) return false;
+
+        Node<T> tempNode = hode; // pointer is at the head or start
+
+        while (tempNode != null){
+            if(tempNode.verdi.equals(verdi)) break;
+           tempNode = tempNode.neste;
+        }
+        if (tempNode == null) {
+            return false;
+        }
+        else if (antall == 1){  //one node in the list then the head is also the tail
+                hode = hale = null;
+        } else if(tempNode == hode){
+            (hode = hode.neste).forrige = null;
+        }else if(tempNode == hale){
+            (hale = hale.forrige).neste = null;
+
+        }else {
+            (tempNode.forrige.neste = tempNode.neste).forrige = tempNode.forrige;
+        }
+
+        tempNode.verdi = null;
+        tempNode.forrige = tempNode.neste = null;
+        antall--;
+        endringer++;
+
+
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        return null;
+
+        //indeksKontroll(indeks, true);
+        if(indeks < 0){
+            throw  new IndexOutOfBoundsException("Index er Ulovlig");
+        }else if(indeks >= antall){
+            throw new IndexOutOfBoundsException("Index er ut av tabellen");
+        }
+
+        Node<T> tempNode = hode;
+
+        if(antall == 1){
+            hode = hale = null;
+        }else if(indeks == 0){
+            (hode = hode.neste).forrige = null;
+        }else if(indeks == antall - 1){ //when we come to the end
+            tempNode = hale;
+            (hale = hale.forrige).neste = null;
+        }else {
+            //here we find the index that should be removed or delected
+            tempNode = finnNode(indeks);
+            tempNode.forrige.neste = tempNode.neste;
+            tempNode.neste.forrige = tempNode.forrige;
+        }
+
+        T tempverdi = tempNode.verdi;
+        tempNode.verdi = null;
+        tempNode.forrige = tempNode.neste = null;
+
+        antall--;
+        endringer++;
+
+        return tempverdi;
     }
 
     /**
@@ -326,11 +395,12 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
@@ -344,9 +414,15 @@ public class DobbeltLenketListe<T> implements Liste<T>{
             iteratorendringer = endringer;  // teller endringer
         }
 
-        private DobbeltLenketListeIterator(int indeks)
-        {
-            throw new UnsupportedOperationException("Ikke laget ennå!");
+        private DobbeltLenketListeIterator(int indeks) {
+            if(indeks < 0){
+                throw  new IndexOutOfBoundsException("Index er Ulovlig");
+            }else if(indeks >= antall){
+                throw new IndexOutOfBoundsException("Indek er ut av tabellen");
+            }
+            denne = finnNode(indeks);
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
@@ -357,14 +433,16 @@ public class DobbeltLenketListe<T> implements Liste<T>{
 
         @Override
         public T next() {
+            if(endringer != iteratorendringer){
+                throw new ConcurrentModificationException("Liste er endret");
+            }
+            if(!hasNext()){
+                throw new NoSuchElementException("Tomt eller ingen flere verdier!");
+            }
             fjernOK = true;
              T verdi = denne.verdi;
              denne = denne.neste;
              return verdi;
-        }
-
-        public Iterator<T> iterator(){
-            return new DobbeltLenketListeIterator();
         }
 
 
